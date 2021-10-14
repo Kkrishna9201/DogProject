@@ -1,0 +1,54 @@
+body
+{
+background-image: url("tutu.jpg");
+background-size: cover;
+background-position: 30% 25%;
+
+}
+
+
+
+
+
+.oppo
+{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+
+
+
+
+
+
+.coco
+{
+padding: 40px;
+
+
+
+}
+
+
+.popo
+{
+padding: 40px;
+
+background-color: orange;
+opacity: 0.6;
+width: 50%;
+
+
+}
+
+.button
+{
+margin-left: 100px;
+
+
+}
+
+

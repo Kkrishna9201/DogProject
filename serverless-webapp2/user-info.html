@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="knockout-3.4.2.js"></script>
+    <link rel="stylesheet" type="text/css"href="mystyle.css">
+    <script type="text/javascript">
+        
+   
+
+		jQuery.support.cors = true;
+		
+        $(document).ready(function() {
+
+            var customerDetailsViewModel = function() {
+            var self = this;
+			
+			self.EmailID = ko.observable("");
+            self.FirstName = ko.observable("");
+            self.LastName = ko.observable("");
+            self.City = ko.observable("");
+            self.Number of Dogs = ko.observable("");
+            self.Contact = ko.observable("");
+          
+
+
+
+
+
+
+
+
+
+            self.SuccessMessage = ko.observable("");
+			
+			
+			
+			
+
+            self.SaveCustomerDetails = function () {              
+                
+				var CustomerDetail = {
+				
+				EmailID: self.EmailID(),
+				FirstName: self.FirstName(),
+				LastName: self.LastName(),
+				City: self.City(),
+				Number of Dogs: self.Breed(),
+				Contact: self.Contact()
+				
+				}
+				
+				
+				
+				
+				
+				$.ajax({
+					crossDomain: true,
+				
+                   // url: 'https://lyqd8tucl9.execute-api.us-east-1.amazonaws.com/dev/resourcek',
+		    url: 'https://youtube.com'			
+					
+                    cache: false,
+                    type: 'POST', 
+                    data: ko.toJSON(CustomerDetail),
+                    success: function (data) {              
+                        self.SuccessMessage(data)
+							self.EmailID('');
+							self.FirstName('');
+							self.LastName('');
+							self.City('');
+							self.Number of Dogs('');
+							self.Contact('');
+							
+						
+                    }
+					}).fail(
+					
+					
+					function(xhr, textStatus, err){
+					alert("Error happened "+err);
+					
+                });
+            };
+        }
+
+            var viewModel = new customerDetailsViewModel();
+            ko.applyBindings(viewModel);
+         });
+
+       
+    </script>
+</head>
+<body>
+<div class="oppo">
+
+    <table>
+<div class="coco">
+        <tr>
+            <td>
+                               
+                                
+				<div class="popo">
+				<p>
+					EmailID:
+					<input data-bind='value: EmailID' />
+					
+					</p>
+					
+					<p>
+					
+						FirstName:
+						<input data-bind='value: FirstName' />
+						</p>
+						<p>
+						LastName:
+						<input data-bind='value: LastName' />
+						</p>
+							
+
+						<p>
+						City:
+						<input data-bind='value: City' />
+						</p>
+
+					        
+                                                <p>
+						Number of Dogs:
+						<input data-bind='value: Number of Dogs' />
+						</p>
+ 
+                                                <p>
+						Contact:
+						<input data-bind='value: Contact' />
+						</p>
+
+
+
+
+
+
+
+
+
+						
+						</div>
+						
+					<span style ="color: darkolivegreen" data-bind='text : SuccessMessage' />
+					
+				</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="button">
+							 <button data-bind="click: $root.SaveCustomerDetails" > Save </button> 
+							</div>
+						</td>
+					</tr>
+					</div>	
+				</table>
+			</div>
+				</body>
+				</html>
